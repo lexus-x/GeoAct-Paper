@@ -1,0 +1,3 @@
+[console_scripts]
+actionrep-bench = benchmark.cli:main
+geoact = geoact.cli:main

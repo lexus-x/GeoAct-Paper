@@ -1,0 +1,62 @@
+{
+  "K=1": {
+    "success_rate": 0.09,
+    "n_components": 1
+  },
+  "K=3": {
+    "success_rate": 0.15,
+    "n_components": 3
+  },
+  "K=5": {
+    "success_rate": 0.15,
+    "n_components": 5
+  },
+  "K=7": {
+    "success_rate": 0.15,
+    "n_components": 7
+  },
+  "K=10": {
+    "success_rate": 0.17,
+    "n_components": 10
+  },
+  "refine=0": {
+    "success_rate": 0.0,
+    "n_steps": 0
+  },
+  "refine=1": {
+    "success_rate": 0.0,
+    "n_steps": 1
+  },
+  "refine=2": {
+    "success_rate": 0.0,
+    "n_steps": 2
+  },
+  "refine=3": {
+    "success_rate": 0.0,
+    "n_steps": 3
+  },
+  "refine=5": {
+    "success_rate": 0.0,
+    "n_steps": 5
+  },
+  "noise=0.01": {
+    "success_rate": 0.0,
+    "noise": 0.01
+  },
+  "noise=0.03": {
+    "success_rate": 0.0,
+    "noise": 0.03
+  },
+  "noise=0.05": {
+    "success_rate": 0.0,
+    "noise": 0.05
+  },
+  "noise=0.1": {
+    "success_rate": 0.0,
+    "noise": 0.1
+  },
+  "noise=0.2": {
+    "success_rate": 0.0,
+    "noise": 0.2
+  }
+}

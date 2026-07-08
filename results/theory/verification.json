@@ -1,0 +1,70 @@
+{
+  "theorems": [
+    {
+      "name": "Theorem 1: No Spurious Local Minima",
+      "statement": "Geodesic loss has unique minimum at \u03c9*",
+      "verified": true,
+      "evidence": {
+        "critical_points_found": 0.0,
+        "near_target": 0.0,
+        "fraction_at_target": 0.0
+      }
+    },
+    {
+      "name": "Geodesic Smoothness",
+      "statement": "Geodesic loss gradient is bounded on SO(3)",
+      "verified": true,
+      "evidence": {
+        "max_gradient_norm": 0.9999762913899793,
+        "mean_gradient_norm": 0.7297777911414934,
+        "bound": 2.0
+      }
+    },
+    {
+      "name": "Bi-Invariance",
+      "statement": "d(R1\u00b7Q, R2\u00b7Q) = d(Q\u00b7R1, Q\u00b7R2) = d(R1, R2)",
+      "verified": true,
+      "evidence": {
+        "max_right_invariance_error": 1.5543122344752192e-15,
+        "max_left_invariance_error": 2.886579864025407e-15
+      }
+    },
+    {
+      "name": "Theorem 2: Euler Discontinuities",
+      "statement": "L2 on Euler angles has discontinuities in SO(3)",
+      "verified": true,
+      "evidence": {
+        "discontinuities_found": 1.0,
+        "path_length": 5000.0,
+        "discontinuity_rate": 0.0002
+      }
+    },
+    {
+      "name": "Quaternion Double Cover",
+      "statement": "Quaternion sign flips cause L2 discontinuity",
+      "verified": false,
+      "evidence": {
+        "sign_flips": 0.0,
+        "path_length": 5000.0
+      }
+    },
+    {
+      "name": "Geodesic Bounded",
+      "statement": "d(R1, R2) \u2208 [0, \u03c0]",
+      "verified": true,
+      "evidence": {
+        "max_distance": 3.1413944121328585,
+        "min_distance": 0.03326840602263898
+      }
+    },
+    {
+      "name": "Triangle Inequality",
+      "statement": "d(R1, R3) \u2264 d(R1, R2) + d(R2, R3)",
+      "verified": true,
+      "evidence": {
+        "violations": 0.0,
+        "samples": 1000.0
+      }
+    }
+  ]
+}

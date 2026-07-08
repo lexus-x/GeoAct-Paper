@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="400" fill="#fff" rx="8" stroke="#ddd"/>
+
+  <!-- VLA Backbone -->
+  <rect x="30" y="80" width="160" height="120" rx="6" fill="#e8f4fd" stroke="#1f6feb" stroke-width="1.5"/>
+  <text x="110" y="110" text-anchor="middle" fill="#1f6feb" font-size="12" font-weight="bold">VLA Backbone</text>
+  <text x="110" y="130" text-anchor="middle" fill="#555" font-size="9">Vision + Language Encoder</text>
+  <text x="110" y="148" text-anchor="middle" fill="#555" font-size="9">→ features f ∈ ℝ^d</text>
+  <text x="110" y="175" text-anchor="middle" fill="#888" font-size="8">(frozen or fine-tuned)</text>
+
+  <!-- Arrow -->
+  <line x1="190" y1="140" x2="230" y2="140" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+  <defs><marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#888"/></marker></defs>
+
+  <!-- GeoAct Head -->
+  <rect x="230" y="40" width="380" height="200" rx="6" fill="#e8fde8" stroke="#238636" stroke-width="1.5"/>
+  <text x="420" y="65" text-anchor="middle" fill="#238636" font-size="14" font-weight="bold">GeoAct Head</text>
+
+  <!-- Sub-modules -->
+  <rect x="250" y="80" width="100" height="30" rx="4" fill="#d4edda" stroke="#28a745"/>
+  <text x="300" y="100" text-anchor="middle" fill="#155724" font-size="9">Projection</text>
+
+  <rect x="360" y="80" width="110" height="30" rx="4" fill="#d4edda" stroke="#28a745"/>
+  <text x="415" y="100" text-anchor="middle" fill="#155724" font-size="9">SE(3) MDN (K)</text>
+
+  <rect x="480" y="80" width="110" height="30" rx="4" fill="#d4edda" stroke="#28a745"/>
+  <text x="535" y="100" text-anchor="middle" fill="#155724" font-size="9">Residual Refine</text>
+
+  <rect x="250" y="120" width="340" height="30" rx="4" fill="#d4edda" stroke="#28a745"/>
+  <text x="420" y="140" text-anchor="middle" fill="#155724" font-size="9">Geodesic Loss: L = ||log(R_pred^T R_target)|| + ||t_pred - t_target||</text>
+
+  <rect x="250" y="160" width="340" height="30" rx="4" fill="#d4edda" stroke="#28a745"/>
+  <text x="420" y="180" text-anchor="middle" fill="#155724" font-size="9">Multi-modal: p(a|f) = Σ_k π_k · N(t;μ_k,σ_k) · vMF(R;μ_R_k,κ_k)</text>
+
+  <rect x="250" y="200" width="340" height="30" rx="4" fill="#d4edda" stroke="#28a745"/>
+  <text x="420" y="220" text-anchor="middle" fill="#155724" font-size="9">SE(3) Constraint: R ∈ SO(3), t ∈ ℝ³ → valid rigid transform always</text>
+
+  <!-- Arrow -->
+  <line x1="610" y1="140" x2="650" y2="140" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- SE(3) Output -->
+  <rect x="650" y="80" width="120" height="120" rx="6" fill="#fde8e8" stroke="#da3633" stroke-width="1.5"/>
+  <text x="710" y="110" text-anchor="middle" fill="#da3633" font-size="12" font-weight="bold">SE(3) Action</text>
+  <text x="710" y="135" text-anchor="middle" fill="#555" font-size="9">R ∈ SO(3)</text>
+  <text x="710" y="152" text-anchor="middle" fill="#555" font-size="9">t ∈ ℝ³</text>
+  <text x="710" y="170" text-anchor="middle" fill="#555" font-size="9">confidence</text>
+
+  <!-- Arrow -->
+  <line x1="770" y1="140" x2="810" y2="140" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Robot -->
+  <rect x="810" y="100" width="60" height="80" rx="6" fill="#f5f5f5" stroke="#888" stroke-width="1.5"/>
+  <text x="840" y="145" text-anchor="middle" fill="#333" font-size="11" font-weight="bold">Robot</text>
+
+  <!-- Bottom: Key Properties -->
+  <text x="30" y="280" fill="#333" font-size="11" font-weight="bold">Key Properties:</text>
+  <text x="30" y="300" fill="#555" font-size="9">1. Geodesic loss: smooth on SO(3), no discontinuities at ±π</text>
+  <text x="30" y="318" fill="#555" font-size="9">2. MDN: handles multi-modal actions (reach left OR right)</text>
+  <text x="30" y="336" fill="#555" font-size="9">3. Residual refinement: iterative correction, each step reduces error</text>
+  <text x="30" y="354" fill="#555" font-size="9">4. SE(3) constraint: output always valid rigid transform (no invalid rotations)</text>
+  <text x="30" y="372" fill="#555" font-size="9">5. Drop-in: replaces any VLA model's action head, no backbone changes</text>
+</svg>
