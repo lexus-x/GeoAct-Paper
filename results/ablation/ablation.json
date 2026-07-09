@@ -1,22 +1,22 @@
 {
   "K=1": {
-    "success_rate": 0.09,
+    "success_rate": 0.07,
     "n_components": 1
   },
   "K=3": {
-    "success_rate": 0.15,
+    "success_rate": 0.13,
     "n_components": 3
   },
   "K=5": {
-    "success_rate": 0.15,
+    "success_rate": 0.12,
     "n_components": 5
   },
   "K=7": {
-    "success_rate": 0.15,
+    "success_rate": 0.19,
     "n_components": 7
   },
   "K=10": {
-    "success_rate": 0.17,
+    "success_rate": 0.14,
     "n_components": 10
   },
   "refine=0": {
