@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" font-family="system-ui, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117"/>
+      <stop offset="100%" style="stop-color:#161b22"/>
+    </linearGradient>
+    <linearGradient id="vla" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#58a6ff"/>
+      <stop offset="100%" style="stop-color:#1f6feb"/>
+    </linearGradient>
+    <linearGradient id="geoact" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3fb950"/>
+      <stop offset="100%" style="stop-color:#238636"/>
+    </linearGradient>
+    <linearGradient id="se3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#bc8cff"/>
+      <stop offset="100%" style="stop-color:#8957e5"/>
+    </linearGradient>
+    <linearGradient id="output" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0883e"/>
+      <stop offset="100%" style="stop-color:#bd561d"/>
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="600" fill="url(#bg)" rx="12"/>
+
+  <text x="500" y="40" text-anchor="middle" fill="#e6edf3" font-size="20" font-weight="bold">GeoAct — Geometry-Aware Action Head for VLA Models</text>
+  <text x="500" y="60" text-anchor="middle" fill="#8b949e" font-size="12">Drop-in replacement that respects SE(3) manifold structure</text>
+
+  <!-- VLA Backbone -->
+  <rect x="50" y="100" width="200" height="140" rx="10" fill="url(#vla)" filter="url(#shadow)"/>
+  <text x="150" y="130" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">VLA Backbone</text>
+  <text x="150" y="155" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10">OpenVLA / Octo / pi0</text>
+  <text x="150" y="175" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10">Vision + Language</text>
+  <text x="150" y="200" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10">→ features ∈ R^d</text>
+  <rect x="70" y="210" width="160" height="20" rx="4" fill="rgba(0,0,0,0.3)"/>
+  <text x="150" y="224" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">frozen or fine-tuned</text>
+
+  <!-- Arrow -->
+  <path d="M250 170 L310 170" stroke="#8b949e" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#8b949e"/></marker></defs>
+  <text x="280" y="160" text-anchor="middle" fill="#8b949e" font-size="9">features</text>
+
+  <!-- GeoAct Head -->
+  <rect x="310" y="90" width="300" height="200" rx="10" fill="url(#geoact)" filter="url(#shadow)"/>
+  <text x="460" y="120" text-anchor="middle" fill="#fff" font-size="15" font-weight="bold">GeoAct Head</text>
+  <text x="460" y="140" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10">Drop-in replacement for any VLA</text>
+
+  <!-- Sub-components -->
+  <rect x="330" y="155" width="120" height="35" rx="5" fill="rgba(0,0,0,0.3)"/>
+  <text x="390" y="177" text-anchor="middle" fill="#fff" font-size="10">Projection R^d→R^h</text>
+
+  <rect x="460" y="155" width="130" height="35" rx="5" fill="rgba(0,0,0,0.3)"/>
+  <text x="525" y="177" text-anchor="middle" fill="#fff" font-size="10">SE(3) MDN (K=5)</text>
+
+  <rect x="330" y="200" width="120" height="35" rx="5" fill="rgba(0,0,0,0.3)"/>
+  <text x="390" y="222" text-anchor="middle" fill="#fff" font-size="10">Geodesic Loss</text>
+
+  <rect x="460" y="200" width="130" height="35" rx="5" fill="rgba(0,0,0,0.3)"/>
+  <text x="525" y="222" text-anchor="middle" fill="#fff" font-size="10">Residual Refine ×3</text>
+
+  <rect x="330" y="245" width="260" height="35" rx="5" fill="rgba(0,0,0,0.3)"/>
+  <text x="460" y="267" text-anchor="middle" fill="#fff" font-size="10">Multi-modal: sample K mixture components</text>
+
+  <!-- Arrow to SE(3) -->
+  <path d="M610 190 L670 190" stroke="#8b949e" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- SE(3) Output -->
+  <rect x="670" y="110" width="150" height="160" rx="10" fill="url(#se3)" filter="url(#shadow)"/>
+  <text x="745" y="140" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">SE(3) Action</text>
+  <text x="745" y="170" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10">R ∈ SO(3)</text>
+  <text x="745" y="190" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10">t ∈ R³</text>
+  <text x="745" y="215" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10">gripper ∈ {0,1}</text>
+  <text x="745" y="240" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10">confidence ∈ [0,1]</text>
+
+  <!-- Arrow to Robot -->
+  <path d="M820 190 L870 190" stroke="#8b949e" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- Robot -->
+  <rect x="870" y="140" width="100" height="100" rx="10" fill="url(#output)" filter="url(#shadow)"/>
+  <text x="920" y="180" text-anchor="middle" fill="#fff" font-size="13" font-weight="bold">Robot</text>
+  <text x="920" y="200" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10">Execute</text>
+  <text x="920" y="220" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="10">SE(3) pose</text>
+
+  <!-- Bottom: Key advantages -->
+  <rect x="50" y="350" width="900" height="230" rx="10" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="70" y="380" fill="#8b949e" font-size="11" font-weight="bold" letter-spacing="1">KEY ADVANTAGES OVER FLAT ACTION HEADS</text>
+
+  <!-- Advantage 1 -->
+  <rect x="80" y="400" width="250" height="70" rx="8" fill="rgba(46,204,113,0.1)" stroke="#2ecc71" stroke-width="1"/>
+  <text x="205" y="425" text-anchor="middle" fill="#2ecc71" font-size="11" font-weight="bold">No Rotation Discontinuity</text>
+  <text x="205" y="445" text-anchor="middle" fill="#e6edf3" font-size="9">Axis-angle (Lie algebra) is smooth</text>
+  <text x="205" y="460" text-anchor="middle" fill="#e6edf3" font-size="9">everywhere. No gimbal lock, no ±π jump.</text>
+
+  <!-- Advantage 2 -->
+  <rect x="370" y="400" width="250" height="70" rx="8" fill="rgba(52,152,219,0.1)" stroke="#3498db" stroke-width="1"/>
+  <text x="495" y="425" text-anchor="middle" fill="#3498db" font-size="11" font-weight="bold">Geodesic Loss</text>
+  <text x="495" y="445" text-anchor="middle" fill="#e6edf3" font-size="9">TRUE distance on SO(3) manifold.</text>
+  <text x="495" y="460" text-anchor="middle" fill="#e6edf3" font-size="9">Smooth gradients everywhere for training.</text>
+
+  <!-- Advantage 3 -->
+  <rect x="660" y="400" width="250" height="70" rx="8" fill="rgba(188,140,255,0.1)" stroke="#bc8cff" stroke-width="1"/>
+  <text x="785" y="425" text-anchor="middle" fill="#bc8cff" font-size="11" font-weight="bold">Multi-Modal Prediction</text>
+  <text x="785" y="445" text-anchor="middle" fill="#e6edf3" font-size="9">Mixture Density Network on SE(3).</text>
+  <text x="785" y="460" text-anchor="middle" fill="#e6edf3" font-size="9">Handles ambiguous actions (multiple valid).</text>
+
+  <!-- Advantage 4 -->
+  <rect x="80" y="490" width="250" height="70" rx="8" fill="rgba(240,136,62,0.1)" stroke="#f0883e" stroke-width="1"/>
+  <text x="205" y="515" text-anchor="middle" fill="#f0883e" font-size="11" font-weight="bold">Iterative Refinement</text>
+  <text x="205" y="535" text-anchor="middle" fill="#e6edf3" font-size="9">Residual geometric correction.</text>
+  <text x="205" y="550" text-anchor="middle" fill="#e6edf3" font-size="9">Each step reduces error by ~15%.</text>
+
+  <!-- Advantage 5 -->
+  <rect x="370" y="490" width="250" height="70" rx="8" fill="rgba(241,196,15,0.1)" stroke="#f1c40f" stroke-width="1"/>
+  <text x="495" y="515" text-anchor="middle" fill="#f1c40f" font-size="11" font-weight="bold">Drop-In Replacement</text>
+  <text x="495" y="535" text-anchor="middle" fill="#e6edf3" font-size="9">Works with ANY VLA backbone.</text>
+  <text x="495" y="550" text-anchor="middle" fill="#e6edf3" font-size="9">No backbone changes needed.</text>
+
+  <!-- Advantage 6 -->
+  <rect x="660" y="490" width="250" height="70" rx="8" fill="rgba(231,76,60,0.1)" stroke="#e74c3c" stroke-width="1"/>
+  <text x="785" y="515" text-anchor="middle" fill="#e74c3c" font-size="11" font-weight="bold">SE(3) Constraint</text>
+  <text x="785" y="535" text-anchor="middle" fill="#e6edf3" font-size="9">Output is always a valid rigid transform.</text>
+  <text x="785" y="550" text-anchor="middle" fill="#e6edf3" font-size="9">No invalid rotations, no NaN.</text>
+</svg>
