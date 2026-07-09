@@ -1,0 +1,24 @@
+# Euclidean Baseline + Mock CNN Backbone
+# Tests head + backbone interaction
+
+model:
+  name: "OctoEuclideanBaseline"
+  hidden_dim: 768
+  freeze_backbone: false
+  backbone_kind: "mock_cnn"
+
+training:
+  learning_rate: 1.0e-4
+  weight_decay: 1.0e-5
+  batch_size: 32
+  n_epochs: 50
+  gradient_clip_norm: 1.0
+
+data:
+  n_train_per_family: 2500
+  n_val_per_family: 250
+  image_size: [224, 224]
+
+logging:
+  save_interval: 25
+  checkpoint_dir: "checkpoints/"
