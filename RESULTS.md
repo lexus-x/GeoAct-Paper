@@ -163,3 +163,21 @@ No evaluation results generated yet (eval_output.json empty). Awaiting training 
 | s3-godsec | Training to epoch ~43/50, loss 0.089 | In progress |
 | Horizon | Student policies 26-58% improvement; dispersion predicts failure on plate-slide | Complete |
 
+
+---
+
+## s3-godsec Final Evaluation Results
+
+### SE(3) Compact VLA Model (50 epochs, best checkpoint)
+
+| Split | Geodesic RMSE | Rotation RMSE | Translation RMSE | Mean Geodesic | Median Geodesic | Samples |
+|-------|--------------|--------------|-----------------|--------------|----------------|---------|
+| Rotation-heavy | 2.340 | 2.340 | 0.046 | 2.259 | 2.304 | 250 |
+| Translation-heavy | 1.102 | 1.056 | 0.307 | 1.021 | 0.945 | 250 |
+| Combined | 1.815 | 1.800 | 0.230 | 1.618 | 1.480 | 500 |
+
+**Key Findings:**
+- Translation-heavy splits show much better performance (geodesic RMSE 1.10 vs 2.34)
+- Rotation prediction remains challenging (RMSE ~1.8-2.3 radians)
+- Translation error is low on rotation-heavy splits (0.046) but higher on translation-heavy (0.307)
+- The model has learned reasonable SE(3) representations but rotation accuracy needs improvement
